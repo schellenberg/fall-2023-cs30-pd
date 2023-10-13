@@ -7,8 +7,8 @@
 //             [1, 1, 0, 1]];
 
 let grid;
-const ROWS = 4;
-const COLS = 4;
+const ROWS = 10;
+const COLS = 10;
 let cellSize;
 
 function setup() {
@@ -31,6 +31,10 @@ function draw() {
 function keyTyped() {
   if (key === "r") {
     grid = createRandomGrid(ROWS, COLS);
+  }
+
+  if (key === "e") {
+    grid = createEmptyGrid(ROWS, COLS);
   }
 }
 
@@ -73,6 +77,17 @@ function createRandomGrid(ROWS, COLS) {
       else {
         newGrid[y].push(0);
       }
+    }
+  }
+  return newGrid;
+}
+
+function createEmptyGrid(ROWS, COLS) {
+  let newGrid = [];
+  for (let y = 0; y < ROWS; y++) {
+    newGrid.push([]);
+    for (let x = 0; x < COLS; x++) {
+      newGrid[y].push(0);
     }
   }
   return newGrid;
