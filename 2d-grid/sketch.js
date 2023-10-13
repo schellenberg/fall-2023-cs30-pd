@@ -1,11 +1,12 @@
 // 2D Grid
 // Oct 12, 2023
 
-let grid = [[0, 1, 0, 0],
-            [1, 0, 1, 1],
-            [0, 0, 1, 1],
-            [1, 1, 0, 1]];
+// let grid = [[0, 1, 0, 0],
+//             [1, 0, 1, 1],
+//             [0, 0, 1, 1],
+//             [1, 1, 0, 1]];
 
+let grid;
 const ROWS = 4;
 const COLS = 4;
 let cellSize;
@@ -13,6 +14,7 @@ let cellSize;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  grid = createRandomGrid(ROWS, COLS);
   if (width < height) {
     cellSize = width/ROWS;
   }
@@ -24,6 +26,12 @@ function setup() {
 function draw() {
   background(220);
   displayGrid();
+}
+
+function keyTyped() {
+  if (key === "r") {
+    grid = createRandomGrid(ROWS, COLS);
+  }
 }
 
 function mousePressed() {
@@ -52,4 +60,20 @@ function displayGrid() {
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
   }
+}
+
+function createRandomGrid(ROWS, COLS) {
+  let newGrid = [];
+  for (let y = 0; y < ROWS; y++) {
+    newGrid.push([]);
+    for (let x = 0; x < COLS; x++) {
+      if (random(100) < 50) {
+        newGrid[y].push(1);
+      }
+      else {
+        newGrid[y].push(0);
+      }
+    }
+  }
+  return newGrid;
 }
