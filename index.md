@@ -4,3 +4,4 @@
 - [Walker Demo](walker)
 - [Bouncing Ball](bouncing-ball)
 - [Fireworks](fireworks)
+- [Recursive Circles](circles)
