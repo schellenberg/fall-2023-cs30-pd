@@ -1,22 +1,26 @@
 // Recursive Circles
 
+let theColors = ["red", "green", "blue", "yellow", "orange", "purple", "black", "pink", "white", "brown", "grey"];
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
   background(220);
-  fractalCircle(width/2, width);
+  let depth = 4;
+  fractalCircle(width/2, width, depth);
 }
 
-function fractalCircle(x, diameter) {
+function fractalCircle(x, diameter, depth) {
+  fill(theColors[depth]);
   circle(x, height/2, diameter);
 
-  if (diameter > 50) {
+  if (depth > 0) {
     //left side
-    fractalCircle(x - diameter/4, diameter/2);
+    fractalCircle(x - diameter/4, diameter/2, depth-1);
 
     //right side
-    fractalCircle(x + diameter/4, diameter/2);
+    fractalCircle(x + diameter/4, diameter/2, depth-1);
   }
 }
